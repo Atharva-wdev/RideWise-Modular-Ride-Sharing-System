@@ -2,10 +2,7 @@ package com.airtribe.ridewise.service;
 
 import com.airtribe.ridewise.model.Driver;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Service responsible for driver management.
@@ -18,8 +15,8 @@ public class DriverService {
         drivers.put(driver.getDriverId(), driver);
     }
 
-    public Driver getDriver(String driverId) {
-        return drivers.get(driverId);
+    public Optional<Driver> getDriver(String driverId) {
+        return Optional.ofNullable(drivers.get(driverId));
     }
 
     public void updateAvailability(String driverId, boolean available) {
