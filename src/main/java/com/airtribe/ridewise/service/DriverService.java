@@ -1,6 +1,7 @@
 package com.airtribe.ridewise.service;
 
 import com.airtribe.ridewise.model.Driver;
+import com.airtribe.ridewise.util.IdGenerator;
 
 import java.util.*;
 
@@ -10,6 +11,21 @@ import java.util.*;
 public class DriverService {
 
     private final Map<String, Driver> drivers = new LinkedHashMap<>();
+
+    public Driver registerDriver(
+            String name,
+            String location) {
+
+        Driver driver = new Driver(
+                IdGenerator.generateDriverId(),
+                name,
+                location
+        );
+
+        addDriver(driver);
+
+        return driver;
+    }
 
     public void addDriver(Driver driver) {
         drivers.put(driver.getDriverId(), driver);

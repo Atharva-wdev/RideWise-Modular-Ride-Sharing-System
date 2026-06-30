@@ -1,6 +1,7 @@
 package com.airtribe.ridewise.service;
 
 import com.airtribe.ridewise.model.Rider;
+import com.airtribe.ridewise.util.IdGenerator;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -13,7 +14,18 @@ import java.util.Optional;
 public class RiderService {
 
     private final Map<String, Rider> riders = new LinkedHashMap<>();
+    public Rider registerRider(String name, String pickupLocation) {
 
+        Rider rider = new Rider(
+                IdGenerator.generateRiderId(),
+                name,
+                pickupLocation
+        );
+
+        addRider(rider);
+
+        return rider;
+    }
     public void addRider(Rider rider) {
         riders.put(rider.getRiderId(), rider);
     }
